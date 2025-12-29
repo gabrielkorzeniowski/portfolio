@@ -1,0 +1,127 @@
+:root {
+  --bg: #0e0e11;
+  --text: #d0d0d0;
+  --muted: #b0b0b0;
+  --accent: #3fa9f5;
+}
+
+/* RESET */
+* {
+  box-sizing: border-box * 2;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+
+  /* Tło działające od razu */
+  background: url("background.jpg") center top / cover no-repeat fixed;
+  background-attachment: fixed;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  padding: 0 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 550;
+}
+
+.subtitle {
+  margin-top: 1.5rem;
+  max-width: 520px;
+  color: var(--muted);
+}
+
+.scroll-indicator {
+  margin-top: 4rem;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--accent);
+}
+
+/* CONTENT */
+.content {
+  padding: 8rem 10vw;
+  max-width: 720px;
+}
+
+.content h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.content h3 {
+  font-size: 1.8rem;           /* pośredni nagłówek */
+  font-weight: 500;             /* lekko pogrubiony */
+  color: #d0d0d0;               /* jaśniejszy szary */
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.content p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.content blockquote {
+  font-size: 1rem;           /* większe niż zwykły tekst */
+  font-style: italic;           /* kursywa */
+  color: #a0a0a0;               /* delikatny szary */
+  border-left: 4px solid var(--accent); /* pasek po lewej */
+  padding-left: 1rem;
+  margin: 2rem 0;               /* odstęp od tekstu */
+  line-height: 1.5;
+}
+
+/* IMAGE SECTION */
+.image-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* wyśrodkowanie poziome */
+  align-items: center;     /* wyśrodkowanie pionowe */
+  overflow: hidden;
+  background: transparent; /* widać body background */
+}
+
+.image-section .image {
+  width: 80vw;
+  height: 85vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform: translateX(100%); /* start poza ekranem */
+  opacity: 0; /* niewidoczne przed animacją */
+
+  transition: transform 1s cubic-bezier(.77,0,.18,1), opacity 2s ease;
+
+  box-shadow: none; /* brak ramki */
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.image-section .image.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* FOOTER */
+footer {
+  padding: 3rem 10vw;
+  font-size: 1rem;
+  color: var(--muted);
+  background-color: black;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
