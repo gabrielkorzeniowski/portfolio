@@ -9,24 +9,36 @@ const observer = new IntersectionObserver(
       if (!image) return;
 
       if (entry.isIntersecting) {
-        // Dodaj klasę show - wjazd zdjęcia
         image.classList.add('show');
       } else {
-        // Usuń klasę show, jeśli sekcja nie jest widoczna
         image.classList.remove('show');
       }
     });
   },
   {
-    threshold: 0.25 // wyzwala animację, gdy 35% sekcji jest widoczne
+    threshold: 0.25 // wyzwala animację, gdy 25% sekcji jest widoczne
   }
 );
 
 // Obserwacja wszystkich sekcji
 sections.forEach(section => observer.observe(section));
 
-// Parallax tła
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  document.body.style.backgroundPosition = `center ${-scrollY * 0.1}px`;
-});
+// Parallax tła - tylko na desktopie
+function handleParallax() {
+  const isMobile = window.innerWidth <= 768; // breakpoint mobilny
+  if (isMobile) {
+    // Mobilne: brak paralaksy, tło stałe
+    document.body.style.backgroundPosition = 'center top';
+  } else {
+    // Desktop: paralaksa działa
+    const scrollY = window.scrollY;
+    document.body.style.backgroundPosition = `center ${-scrollY * 0.1}px`;
+  }
+}
+
+// Wywołanie przy scrollu
+window.addEventListener('scroll', handleParallax);
+// Wywołanie przy zmianie rozmiaru okna
+window.addEventListener('resize', handleParallax);
+// Wywołanie raz przy załadowaniu strony
+handleParallax();
