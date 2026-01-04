@@ -9,14 +9,14 @@ const observer = new IntersectionObserver(
       if (!image) return;
 
       if (entry.isIntersecting) {
-        image.classList.add('show');
+        image.classList.add('show');   // wjazd zdjęcia
       } else {
         image.classList.remove('show');
       }
     });
   },
   {
-    threshold: 0.25 // wyzwala animację, gdy 25% sekcji jest widoczne
+    threshold: 0.25 // animacja wyzwala się, gdy 25% sekcji jest widoczne
   }
 );
 
@@ -25,15 +25,11 @@ sections.forEach(section => observer.observe(section));
 
 // Parallax tła - tylko na desktopie
 function handleParallax() {
-  const isMobile = window.innerWidth <= 768; // breakpoint mobilny
-  if (isMobile) {
-    // Mobilne: brak paralaksy, tło stałe
-    document.body.style.backgroundPosition = 'center top';
-  } else {
-    // Desktop: paralaksa działa
-    const scrollY = window.scrollY;
-    document.body.style.backgroundPosition = `center ${-scrollY * 0.1}px`;
-  }
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile) return; // brak paralaksy na mobilnych
+
+  const scrollY = window.scrollY;
+  document.body.style.backgroundPosition = `center ${-scrollY * 0.1}px`;
 }
 
 // Wywołanie przy scrollu
