@@ -129,7 +129,7 @@ footer {
 @media (max-width: 768px) {
 body {
   background-image: url("background2.jpg"); /* nowe tło mobilne */
-  background-size: cover;                   /* dopasowanie całego ekranu */
+  background-size: 102vw 102vh;                  /* dopasowanie całego ekranu */
   background-position: center center;       /* wycentrowane */
   background-attachment: scroll;            /* brak paralaksy, tło statyczne */
   background-repeat: no-repeat;
@@ -177,6 +177,7 @@ body {
     font-size: 0.9rem;
   }
 }
+
 
 
 
