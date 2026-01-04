@@ -125,3 +125,64 @@ footer {
   background-color: black;
   border-top: 1px solid rgba(255,255,255,0.05);
 }
+
+@media (max-width: 768px) {
+  body::before {
+    content: "";
+    position: fixed;        /* zawsze przy ekranie */
+    top: 0;
+    left: 0;
+    width: 102%;
+    height: 102%;
+    background-image: url("background2.jpg"); /* tło mobilne */
+    background-size: cover;                    /* dopasowanie do ekranu */
+    background-position: center center;        /* wycentrowane */
+    background-repeat: no-repeat;
+    z-index: -1;                               /* za wszystkimi elementami */
+    pointer-events: none;                      /* nie wchodzi w interakcje */
+  }
+
+  /* Reszta stylów mobilnych */
+  .hero {
+    min-height: 100vh;
+    padding: 0 5vw;
+  }
+
+  .content {
+    padding: 4rem 5vw;
+    max-width: 90vw;
+  }
+
+  .content h2 {
+    font-size: 2.5rem;
+  }
+
+  .content h3 {
+    font-size: 1.5rem;
+  }
+
+  .image-section {
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .image-section .image {
+    width: 95vw;
+    height: 50vw;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .scroll-indicator {
+    margin-top: 2rem;
+  }
+
+  footer {
+    padding: 2rem 5vw;
+    font-size: 0.9rem;
+  }
+}
+
+
