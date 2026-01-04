@@ -127,20 +127,13 @@ footer {
 }
 
 @media (max-width: 768px) {
-  body::before {
-    content: "";
-    position: fixed;        /* zawsze przy ekranie */
-    top: 0;
-    left: 0;
-    width: 102%;
-    height: 102%;
-    background-image: url("background2.jpg"); /* tło mobilne */
-    background-size: cover;                    /* dopasowanie do ekranu */
-    background-position: center center;        /* wycentrowane */
-    background-repeat: no-repeat;
-    z-index: -1;                               /* za wszystkimi elementami */
-    pointer-events: none;                      /* nie wchodzi w interakcje */
-  }
+body {
+  background-image: url("background2.jpg"); /* nowe tło mobilne */
+  background-size: cover;                   /* dopasowanie całego ekranu */
+  background-position: center center;       /* wycentrowane */
+  background-attachment: scroll;            /* brak paralaksy, tło statyczne */
+  background-repeat: no-repeat;
+}
 
   /* Reszta stylów mobilnych */
   .hero {
@@ -184,5 +177,6 @@ footer {
     font-size: 0.9rem;
   }
 }
+
 
 
